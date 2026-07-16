@@ -1,0 +1,106 @@
+ /* =====================================================
+    PREMIUM THEME TOGGLE
+ ===================================================== */
+
+.theme-toggle-btn {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  min-width: 76px;
+  height: 38px;
+
+  padding: 4px 10px 4px 5px;
+
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 999px;
+
+  cursor: pointer;
+
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 800;
+
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.25s ease,
+    box-shadow 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+  transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   ICON CONTAINER
+ ===================================================== */
+
+.theme-toggle-icon {
+  width: 29px;
+  height: 29px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  transition:
+    transform 0.4s ease,
+    background-color 0.3s ease;
+}
+
+.theme-toggle-btn:hover .theme-toggle-icon {
+  transform: rotate(20deg);
+}
+
+
+/* =====================================================
+   DARK MODE BUTTON
+ ===================================================== */
+
+.theme-toggle-btn.dark-active {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(216,185,92,0.35);
+  color: #d8b95c;
+}
+
+.theme-toggle-btn.dark-active .theme-toggle-icon {
+  background: #d8b95c;
+  color: #101d39;
+}
+
+
+/* =====================================================
+   LIGHT MODE BUTTON
+ ===================================================== */
+
+.theme-toggle-btn.light-active {
+  background: rgba(28,88,219,0.08);
+  border-color: rgba(28,88,219,0.25);
+  color: #1c58db;
+}
+
+.theme-toggle-btn.light-active .theme-toggle-icon {
+  background: #1c58db;
+  color: #ffffff;
+}
+
+
+/* =====================================================
+   MOBILE VERSION
+ ===================================================== */
+
+@media (max-width: 960px) {
+
+  .theme-toggle-btn {
+    min-width: 82px;
+    height: 40px;
+  }
+
+}
