@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 
 import { processingProducts } from "../data/siteData";
-import uzoffice from "../assets/uzoffice.jpg";
+import processing from "../assets/processing-bg.jpg";
 
 import "./Production.css";
 import ScrollReveal from "./ScrollReveal";
@@ -29,7 +29,7 @@ export default function Processing() {
               rgba(5, 35, 70, 0.75),
               rgba(5, 35, 70, 0.45)
             ),
-            url(${uzoffice})
+            url(${processing})
           `,
         }}
       >
