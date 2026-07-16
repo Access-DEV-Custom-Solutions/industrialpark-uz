@@ -11,7 +11,7 @@ import {
 import { processingProducts } from "../data/siteData";
 import processing from "../assets/processing-bg.jpg";
 
-import "./Production.css";
+import "./Processing.css";
 import ScrollReveal from "./ScrollReveal";
 
 export default function Processing() {
