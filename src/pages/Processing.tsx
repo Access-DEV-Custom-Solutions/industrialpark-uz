@@ -1,118 +1,392 @@
-import { Factory, ArrowRight, ShoppingBag, Mail } from "lucide-react";
+import {
+  Factory,
+  PhoneCall,
+  ArrowRight,
+  Leaf,
+  ShoppingBasket,
+  CheckCircle2,
+  PackageCheck,
+} from "lucide-react";
+
 import { processingProducts } from "../data/siteData";
-import nugoldLogo from "../assets/nugold-logo.jpg";
-import processingBg from "../assets/processing-bg.jpg"; 
-import "./Processing.css";
+import uzoffice from "../assets/uzoffice.jpg";
+
+import "./Production.css";
 import ScrollReveal from "./ScrollReveal";
 
 export default function Processing() {
   return (
-    <main className="processing-page">
-      {/* Hero Section */}
-      <section 
-        className="proc-hero"
+    <main className="production-page">
+
+      {/* ================= HERO ================= */}
+      <section
+        className="prod-hero processing-hero"
         style={{
-          backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.85)), url(${processingBg})`,
+          backgroundImage: `
+            linear-gradient(
+              90deg,
+              rgba(5, 25, 55, 0.95),
+              rgba(5, 35, 70, 0.75),
+              rgba(5, 35, 70, 0.45)
+            ),
+            url(${uzoffice})
+          `,
         }}
       >
-        <div className="proc-hero-container">
+
+        <div className="prod-hero-container">
+
           <ScrollReveal>
-            <div className="logo-badge-wrapper">
-              <img className="proc-section-logo" src={nugoldLogo} alt="Nu-Gold Brand Logo" />
+            <div className="prod-eyebrow">
+              <Factory size={17} />
+              <span>VakaNyika Processing Unit</span>
             </div>
           </ScrollReveal>
-          
+
           <ScrollReveal delay={0.15}>
-            <div className="proc-eyebrow">
-              <Factory size={16} className="proc-icon-spin" />
-              <span>VakaNyika Factory Unit</span>
-            </div>
-          </ScrollReveal>
-          
-          <ScrollReveal delay={0.3}>
-            <h1>Nu-Gold Processed Products</h1>
-          </ScrollReveal>
-          
-          <ScrollReveal delay={0.45}>
-            <p>
-              Value addition meets industrial excellence. The VakaNyika (VN) Processing Unit 
-              manufactures premium cooking oil, high-grade animal feed, nutritious sweet potato NutriLoaf, 
-              and fresh confectionery products—all proudly branded under the Nu-Gold seal of quality.
+            <p className="prod-hero-kicker">
+              PROCESS • ADD VALUE • BUILD INDUSTRY
             </p>
           </ScrollReveal>
-          
-          <ScrollReveal delay={0.6}>
-            <a href="#nugold-products" className="proc-btn-secondary">
-              Explore Range <ArrowRight size={16} />
-            </a>
+
+          <ScrollReveal delay={0.25}>
+            <h1>
+              From raw materials
+              <span>to products that create value.</span>
+            </h1>
           </ScrollReveal>
+
+          <ScrollReveal delay={0.4}>
+            <p className="prod-hero-description">
+              The VakaNyika Processing Unit transforms agricultural production
+              into quality food, livestock feed and consumer products through
+              innovation, value addition and practical industrial production.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.5}>
+            <div className="prod-hero-actions">
+
+              <a
+                href="#processing-products"
+                className="prod-btn-primary"
+              >
+                Explore Our Products
+                <ArrowRight size={17} />
+              </a>
+
+              <a
+                href="tel:+263773698834"
+                className="prod-btn-secondary"
+              >
+                <PhoneCall size={17} />
+                Product Enquiries
+              </a>
+
+            </div>
+          </ScrollReveal>
+
         </div>
+
+        <div className="prod-hero-bottom">
+
+          <div>
+            <strong>Value Added</strong>
+            <span>From farm to product</span>
+          </div>
+
+          <div>
+            <strong>Innovative</strong>
+            <span>Research-driven processing</span>
+          </div>
+
+          <div>
+            <strong>Local</strong>
+            <span>Zimbabwean production</span>
+          </div>
+
+        </div>
+
       </section>
 
-      {/* Catalog Section */}
-      <section className="catalog-section processing" id="nugold-products">
-        <div className="catalog-container">
+
+      {/* ================= INTRODUCTION ================= */}
+      <section className="production-intro processing-intro">
+
+        <div className="production-intro-inner">
+
+          <ScrollReveal>
+            <div className="intro-icon">
+              <PackageCheck size={28} />
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.15}>
+            <div>
+
+              <span className="prod-section-label">
+                VALUE ADDITION IN ACTION
+              </span>
+
+              <h2>
+                Turning agricultural production into opportunity.
+              </h2>
+
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.25}>
+            <p>
+              The VakaNyika Processing Unit connects agriculture with
+              manufacturing, food production and entrepreneurship. Through
+              processing and value addition, locally produced raw materials
+              are transformed into products that serve households, businesses
+              and the wider agricultural sector.
+            </p>
+          </ScrollReveal>
+
+        </div>
+
+      </section>
+
+
+      {/* ================= PROCESSING JOURNEY ================= */}
+      <section className="processing-journey">
+
+        <div className="processing-journey-container">
+
           <div className="section-header">
+
             <ScrollReveal>
-              <h2>Our Processed Range</h2>
+              <span className="prod-section-label">
+                THE VAKANYIKA VALUE CHAIN
+              </span>
             </ScrollReveal>
+
+            <ScrollReveal delay={0.1}>
+              <h2>
+                From agriculture to industry.
+              </h2>
+            </ScrollReveal>
+
             <ScrollReveal delay={0.2}>
-              <p>Locally manufactured, globally standard value-added commodities</p>
+              <p>
+                Our processing ecosystem creates a connection between
+                agricultural production, technology, manufacturing and markets.
+                Agricultural raw materials are produced through farming
+                and livestock systems.
+                  Raw materials are transformed through modern processing
+                  and manufacturing activities.
+                  Processing creates quality products, employment opportunities
+                  and commercial value.
+                  Finished products reach consumers, businesses and agricultural
+                  markets.
+              </p>
             </ScrollReveal>
+
           </div>
-          
-          <div className="gallery-grid product-grid">
-            {processingProducts.map((item, index) => (
-              <ScrollReveal key={item.name} delay={index * 0.05}>
-                <article className="product-card processed-card">
-                  <div className="product-image-wrapper">
-                    <img src={item.image} alt={item.name} loading="lazy" />
-                    <span className="product-badge gold-badge">Nu-Gold Premium</span>
-                  </div>
-                  <div className="product-info processed-info">
-                    <div className="title-area">
-                      <h3>{item.name}</h3>
-                    </div>
-                  </div>
-                </article>
-              </ScrollReveal>
-            ))}
+
+          <div className="processing-steps">
+
+            <ScrollReveal>
+              <div className="processing-step">
+
+                <div className="processing-step-icon">
+                  <Leaf size={24} />
+                </div>
+
+              </div>
+            </ScrollReveal>
+
+           
+                
+
           </div>
+
         </div>
+
       </section>
 
-      {/* Modern B2B/Wholesale CTA */}
-      <section className="proc-cta-section">
-        <ScrollReveal>
-          <div className="proc-cta-card">
-            <div className="proc-cta-content">
-              <h2>Bulk &amp; Wholesale Supply</h2>
-              <p>Partner with VakaNyika Factory for commercial supply lines of stock feeds, cooking oil, and bakery batches.</p>
-            </div>
-            
-            <div className="proc-cta-actions">
-              <a 
-                href="https://wa.me/263788064126?text=Hi,%20I'm%20interested%20in%20placing%20a%20wholesale%20bulk%20order%20inquiry%20for%20VakaNyika%20products." 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="proc-btn-primary"
-              >
-                <ShoppingBag size={18} />
-                Place Order Inquiries
-              </a>
 
-              {/* Email Contact Action Link */}
-              <a 
-                href="mailto:sales@vnagro.uz" 
-                className="proc-btn-email"
-              >
-                <Mail size={18} />
-                Email Factory Unit
-              </a>
-            </div>
+      {/* ================= PRODUCTS ================= */}
+      <section
+        className="catalog-section"
+        id="processing-products"
+      >
+
+        <div className="catalog-container">
+
+          <div className="section-header">
+
+            <ScrollReveal>
+              <span className="prod-section-label">
+                VAKANYIKA PRODUCTS
+              </span>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.1}>
+              <h2>
+                Products created through value addition.
+              </h2>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.2}>
+              <p>
+                Explore a growing range of food products, baked goods,
+                cooking products and livestock feeds produced through the
+                VakaNyika Processing Unit.
+              </p>
+            </ScrollReveal>
+
           </div>
-        </ScrollReveal>
+
+
+          <div className="catalog-toolbar">
+
+            <div className="catalog-count">
+
+              <ShoppingBasket size={18} />
+
+              <span>
+                {processingProducts.length} product categories
+              </span>
+
+            </div>
+
+            <span className="availability-label">
+
+              <span className="availability-dot"></span>
+
+              Product availability may vary
+
+            </span>
+
+          </div>
+
+
+          <div className="gallery-grid">
+
+            {processingProducts.map((item, index) => (
+
+              <ScrollReveal
+                key={item.name}
+                delay={index * 0.05}
+              >
+
+                <article className="product-card processing-card">
+
+                  <div className="product-image-wrapper">
+
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      loading="lazy"
+                    />
+
+                    <span className="product-badge processing-badge">
+
+                      <Factory size={13} />
+
+                      Value Added
+
+                    </span>
+
+                    <div className="product-image-overlay">
+
+                      <span>
+
+                        Explore Product
+
+                        <ArrowRight size={15} />
+
+                      </span>
+
+                    </div>
+
+                  </div>
+
+
+                  <div className="product-info">
+
+                    <div className="product-title-row">
+
+                      <h3>
+                        {item.name}
+                      </h3>
+
+                      <CheckCircle2
+                        size={18}
+                        className="product-check"
+                      />
+
+                    </div>
+
+                    <p>
+                      Produced through the VakaNyika Processing Unit
+                      as part of the University of Zimbabwe Agro Industrial Park.
+                    </p>
+
+                  </div>
+
+                </article>
+
+              </ScrollReveal>
+
+            ))}
+
+          </div>
+
+        </div>
+
       </section>
+
+
+      {/* ================= CTA ================= */}
+      <section className="prod-cta-section">
+
+        <ScrollReveal>
+
+          <div className="prod-cta-card processing-cta">
+
+            <div className="prod-cta-icon">
+              <Factory size={28} />
+            </div>
+
+            <div className="prod-cta-content">
+
+              <span>
+                PRODUCT ENQUIRIES
+              </span>
+
+              <h2>
+                Interested in our value-added products?
+              </h2>
+
+              <p>
+                Contact the VakaNyika Processing Unit for product availability,
+                bulk orders, commercial enquiries and more information about
+                our processing activities.
+              </p>
+
+            </div>
+
+            <a
+              href="tel:+263773698834"
+              className="prod-btn-primary"
+            >
+
+              <PhoneCall size={18} />
+
+              Contact VakaNyika
+
+            </a>
+
+          </div>
+
+        </ScrollReveal>
+
+      </section>
+
     </main>
   );
 }

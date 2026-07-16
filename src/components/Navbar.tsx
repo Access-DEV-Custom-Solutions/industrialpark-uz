@@ -1,64 +1,119 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
+
 import uzLogo from "../assets/uzlogo.jpg";
 import ThemeToggle from "../pages/ThemeToggle";
-import "../components/Navbar.css"; // Imports the new stylesheet across folder structures
+import "../components/Navbar.css";
 
 const navLinks = [
-  { label: "Production Unit", to: "/production" },
-  { label: "VakaNyika(VN) our Processing Unit", to: "/processing" },
+  { label: "Production", to: "/production" },
+  { label: "Processing", to: "/processing" },
   { label: "Farm Tourism", to: "/tourism" },
-  { label: "Contact", to: "/contact" },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header className="topbar">
-      <Link className="brand" to="/" aria-label="University of Zimbabwe Agro Industrial Park home">
-        <span className="brand-mark image-mark">
-          <img src={uzLogo} alt="UZ Logo" />
+
+      {/* ================= BRAND ================= */}
+      <Link
+        className="brand"
+        to="/"
+        onClick={closeMenu}
+        aria-label="University of Zimbabwe Agro Industrial Park home"
+      >
+
+        <span className="brand-mark">
+          <img src={uzLogo} alt="University of Zimbabwe Logo" />
         </span>
-        <span className="brand-text">University of Zimbabwe Agro Industrial Park</span>
+
+        <span className="brand-text">
+          <strong>University of Zimbabwe</strong>
+          <small>Agro Industrial Park</small>
+        </span>
+
       </Link>
 
+
+      {/* ================= DESKTOP / MOBILE CONTROLS ================= */}
       <div className="nav-controls-wrapper">
-        <nav className={menuOpen ? "nav open" : "nav"} aria-label="Main navigation">
-          {navLinks.map(({ label, to }) => (
-            <Link
-              key={to}
-              to={to}
-              onClick={() => setMenuOpen(false)}
-              className={location.pathname === to ? "active-link" : ""}
-            >
-              {label}
-            </Link>
-          ))}
-          
-          {/* Mobile view toggle item placement inside links list */}
+
+        <nav
+          className={`nav ${menuOpen ? "open" : ""}`}
+          aria-label="Main navigation"
+        >
+
+          {navLinks.map(({ label, to }) => {
+
+            const isActive = location.pathname === to;
+
+            return (
+              <Link
+                key={to}
+                to={to}
+                onClick={closeMenu}
+                className={isActive ? "active-link" : ""}
+              >
+                {label}
+              </Link>
+            );
+          })}
+
+
+          {/* CONTACT CTA */}
+          <Link
+            to="/contact"
+            onClick={closeMenu}
+            className={`nav-contact ${
+              location.pathname === "/contact" ? "active-contact" : ""
+            }`}
+          >
+            Contact
+            <ArrowUpRight size={15} />
+          </Link>
+
+
+          {/* MOBILE THEME TOGGLE */}
           <div className="mobile-only-toggle">
-            <span className="toggle-label">Theme Mode:</span>
+            <span className="toggle-label">
+              Theme Mode
+            </span>
+
             <ThemeToggle />
           </div>
+
         </nav>
 
-        {/* Desktop theme toggle placement */}
+
+        {/* DESKTOP THEME TOGGLE */}
         <div className="desktop-only-toggle">
           <ThemeToggle />
         </div>
 
+
+        {/* MOBILE MENU BUTTON */}
         <button
           className="menu-toggle"
           type="button"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
-          onClick={() => setMenuOpen((v) => !v)}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((value) => !value)}
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          {menuOpen ? (
+            <X size={24} />
+          ) : (
+            <Menu size={24} />
+          )}
         </button>
+
       </div>
+
     </header>
   );
 }

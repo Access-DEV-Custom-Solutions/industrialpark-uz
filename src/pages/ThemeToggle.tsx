@@ -1,51 +1,49 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";
 
+import "./ThemeToggle.css";
+
 export default function ThemeToggle() {
-  // Check local storage or system preference on initial load
   const [isDark, setIsDark] = useState<boolean>(() => {
     const savedTheme = localStorage.getItem("theme");
-    return savedTheme ? savedTheme === "dark" : true;
+
+    if (savedTheme) {
+      return savedTheme === "dark";
+    }
+
+    return true;
   });
 
-  // Update theme whenever it changes
   useEffect(() => {
-    if (isDark) {
-      document.body.classList.remove("light-mode");
-      document.body.classList.add("dark-mode");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.body.classList.remove("dark-mode");
-      document.body.classList.add("light-mode");
-      localStorage.setItem("theme", "light");
-    }
+    document.body.classList.toggle("dark-mode", isDark);
+    document.body.classList.toggle("light-mode", !isDark);
+
+    localStorage.setItem("theme", isDark ? "dark" : "light");
   }, [isDark]);
+
+  const toggleTheme = () => {
+    setIsDark((currentTheme) => !currentTheme);
+  };
 
   return (
     <button
-      onClick={() => setIsDark(!isDark)}
-      className="theme-toggle-btn"
-      aria-label="Toggle theme mode"
-      style={{
-        background: "none",
-        border: "none",
-        cursor: "pointer",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "6px",
-        borderRadius: "50%",
-        color: isDark ? "#fbbf24" : "#1e293b",
-        transition: "transform 0.2s ease",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "scale(1.1)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "scale(1)";
-      }}
+      type="button"
+      className={`theme-toggle-btn ${isDark ? "dark-active" : "light-active"}`}
+      onClick={toggleTheme}
+      aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+      aria-pressed={isDark}
     >
-      {isDark ? <Sun size={20} /> : <Moon size={20} />}
+      <span className="theme-toggle-icon">
+        {isDark ? (
+          <Sun size={17} strokeWidth={2.4} />
+        ) : (
+          <Moon size={17} strokeWidth={2.4} />
+        )}
+      </span>
+
+      <span className="theme-toggle-text">
+        {isDark ? "Dark" : "Light"}
+      </span>
     </button>
   );
 }
