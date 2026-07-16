@@ -5,12 +5,7 @@ import ScrollReveal from "./ScrollReveal";
 import tour1 from "../assets/slideshow/tour1.jpg";
 import tour2 from "../assets/slideshow/tour2.jpg";
 import tour3 from "../assets/slideshow/tour3.jpg";
-import tour4 from "../assets/slideshow/tour4.jpg";
-import tour5 from "../assets/slideshow/tour5.jpg";
-import tour6 from "../assets/slideshow/tour6.jpg";
-import tour7 from "../assets/slideshow/tour7.jpg";
 import tour8 from "../assets/slideshow/tour8.jpg";
-import tour9 from "../assets/slideshow/uzmaize1.jpg";
 import tour10 from "../assets/slideshow/IMG-20250423-WA0000.jpg";
 import tour11 from "../assets/slideshow/IMG-20250423-WA0002.jpg";
 import tour12 from "../assets/slideshow/IMG-20250424-WA0036.jpg";
@@ -19,8 +14,8 @@ import tour14 from "../assets/slideshow/Screenshot_20250513_092934_com.whatsapp.
 
 // Array grouping all imported assets for slideshow rotation
 const slideshowImages = [
-  tour1, tour2, tour3, tour4, tour5, tour6, tour7,
-  tour8, tour9, tour10, tour11, tour12, tour13, tour14
+  tour1, tour2, tour3,
+  tour8, tour10, tour11, tour12, tour13, tour14
 ];
 
 // Each tour is a real stop along the physical route through the Park —
