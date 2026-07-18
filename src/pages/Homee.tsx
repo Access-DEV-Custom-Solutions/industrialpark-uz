@@ -503,7 +503,7 @@ export default function Homee() {
 </section>
           <ScrollReveal delay={0.4}>
             <a
-              href="https://wa.me/263773698834?text=Hi,%20I'm%20interested%20in%20booking%20an%20Agro-Tourism%20visit%20to%20the%20University%20of%20Zimbabwe%20Agro%20Industrial%20Park."
+              href="https://wa.me/263773236670?text=Hi,%20I'm%20interested%20in%20booking%20an%20Agro-Tourism%20visit%20to%20the%20University%20of%20Zimbabwe%20Agro%20Industrial%20Park."
               target="_blank"
               rel="noopener noreferrer"
               className="hero-btn primary-btn"

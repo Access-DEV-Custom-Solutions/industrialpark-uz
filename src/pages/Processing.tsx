@@ -1,11 +1,15 @@
+import { useState } from "react";
+
 import {
   Factory,
   PhoneCall,
   ArrowRight,
+  ArrowLeft,
   Leaf,
   ShoppingBasket,
   CheckCircle2,
   PackageCheck,
+  X,
 } from "lucide-react";
 
 import { processingProducts } from "../data/siteData";
@@ -15,6 +19,10 @@ import "./Processing.css";
 import ScrollReveal from "./ScrollReveal";
 
 export default function Processing() {
+  const [selectedProduct, setSelectedProduct] = useState<
+    (typeof processingProducts)[number] | null
+  >(null);
+
   return (
     <main className="production-page">
 
@@ -173,14 +181,7 @@ export default function Processing() {
               <p>
                 Our processing ecosystem creates a connection between
                 agricultural production, technology, manufacturing and markets.
-                Agricultural raw materials are produced through farming
-                and livestock systems.
-                  Raw materials are transformed through modern processing
-                  and manufacturing activities.
-                  Processing creates quality products, employment opportunities
-                  and commercial value.
-                  Finished products reach consumers, businesses and agricultural
-                  markets.
+               
               </p>
             </ScrollReveal>
 
@@ -195,11 +196,66 @@ export default function Processing() {
                   <Leaf size={24} />
                 </div>
 
+                <h3>Produce</h3>
+
+                <p>
+                  Agricultural raw materials are produced through farming
+                  and livestock systems.
+                </p>
+
               </div>
             </ScrollReveal>
 
-           
-                
+            <ScrollReveal delay={0.1}>
+              <div className="processing-step">
+
+                <div className="processing-step-icon">
+                  <Factory size={24} />
+                </div>
+
+                <h3>Process</h3>
+
+                <p>
+                  Raw materials are transformed through modern processing
+                  and manufacturing activities.
+                </p>
+
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.2}>
+              <div className="processing-step">
+
+                <div className="processing-step-icon">
+                  <PackageCheck size={24} />
+                </div>
+
+                <h3>Add Value</h3>
+
+                <p>
+                  Processing creates quality products, employment opportunities
+                  and commercial value.
+                </p>
+
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.3}>
+              <div className="processing-step">
+
+                <div className="processing-step-icon">
+                  <ShoppingBasket size={24} />
+                </div>
+
+                <h3>Reach Markets</h3>
+
+                <p>
+                  Finished products reach consumers, businesses and
+                  agricultural markets.
+                </p>
+
+              </div>
+            </ScrollReveal>
 
           </div>
 
@@ -291,9 +347,15 @@ export default function Processing() {
 
                     </span>
 
-                    <div className="product-image-overlay">
+                    {/* CLICKABLE EXPLORE OVERLAY */}
+                    <button
+                      type="button"
+                      className="product-image-overlay"
+                      onClick={() => setSelectedProduct(item)}
+                      aria-label={`Explore ${item.name}`}
+                    >
 
-                      <span>
+                      <span className="explore-product-text">
 
                         Explore Product
 
@@ -301,7 +363,7 @@ export default function Processing() {
 
                       </span>
 
-                    </div>
+                    </button>
 
                   </div>
 
@@ -339,6 +401,78 @@ export default function Processing() {
         </div>
 
       </section>
+
+
+      {/* ================= PRODUCT PREVIEW MODAL ================= */}
+      {selectedProduct && (
+
+        <div
+          className="product-modal-backdrop"
+          onClick={() => setSelectedProduct(null)}
+        >
+
+          <div
+            className="product-modal"
+            onClick={(event) => event.stopPropagation()}
+          >
+
+            <button
+              type="button"
+              className="product-modal-close"
+              onClick={() => setSelectedProduct(null)}
+              aria-label="Close product preview"
+            >
+              <X size={22} />
+            </button>
+
+
+            <div className="product-modal-image">
+
+              <img
+                src={selectedProduct.image}
+                alt={selectedProduct.name}
+              />
+
+            </div>
+
+
+            <div className="product-modal-content">
+
+              <span className="product-modal-label">
+                VAKANYIKA PRODUCT
+              </span>
+
+              <h2>
+                {selectedProduct.name}
+              </h2>
+
+              <p>
+                This product is part of the VakaNyika Processing Unit's
+                value-added agricultural production portfolio.
+              </p>
+
+              <p>
+                Through local processing, agricultural raw materials are
+                transformed into quality products that support food
+                production, livestock development, entrepreneurship and
+                industrial growth.
+              </p>
+
+              <a
+                href="tel:+263773698834"
+                className="prod-btn-primary product-modal-button"
+              >
+                <PhoneCall size={17} />
+                Enquire About This Product
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      )}
 
 
       {/* ================= CTA ================= */}
