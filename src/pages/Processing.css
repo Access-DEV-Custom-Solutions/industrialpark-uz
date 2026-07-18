@@ -11,7 +11,6 @@
 
 .hero-gradient-text {
   background: linear-gradient(135deg, #3b82f6 0%, #d8b95c 100%);
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
 }
@@ -746,5 +745,251 @@ align-items: flex-start;
     grid-column: span 2;
   }
 
+}
+/* =====================================================
+   PRODUCT PREVIEW MODAL
+===================================================== */
+
+.product-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1.5rem;
+
+  background: rgba(3, 10, 24, 0.82);
+
+  backdrop-filter: blur(12px);
+
+  animation: productModalFadeIn 0.25s ease;
+}
+
+
+.product-modal {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+  width: min(950px, 100%);
+
+  max-height: min(680px, 90vh);
+
+  overflow: hidden;
+
+  background: var(--bg-card, #111827);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.45);
+
+  animation: productModalSlideUp 0.3s ease;
+}
+
+
+/* CLOSE BUTTON */
+
+.product-modal-close {
+  position: absolute;
+
+  top: 16px;
+  right: 16px;
+
+  z-index: 5;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  border-radius: 50%;
+
+  background: rgba(5, 15, 35, 0.75);
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+
+.product-modal-close:hover {
+  transform: rotate(90deg);
+
+  background: #1c58db;
+}
+
+
+/* MODAL IMAGE */
+
+.product-modal-image {
+  min-height: 430px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(28, 88, 219, 0.15),
+      rgba(216, 185, 92, 0.08)
+    );
+}
+
+
+.product-modal-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+/* MODAL CONTENT */
+
+.product-modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 3rem;
+}
+
+
+.product-modal-label {
+  display: inline-block;
+
+  margin-bottom: 1rem;
+
+  color: #d8b95c;
+
+  font-size: 0.75rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+
+.product-modal-content h2 {
+  margin: 0 0 1.25rem;
+
+  color: var(--text-main, #f8fafc);
+
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+
+  line-height: 1.1;
+}
+
+
+.product-modal-content p {
+  margin: 0 0 1rem;
+
+  color: var(--text-muted, #94a3b8);
+
+  font-size: 0.98rem;
+
+  line-height: 1.7;
+}
+
+
+.product-modal-button {
+  width: fit-content;
+
+  margin-top: 1rem;
+
+  text-decoration: none;
+}
+
+
+/* ANIMATIONS */
+
+@keyframes productModalFadeIn {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+@keyframes productModalSlideUp {
+
+  from {
+    opacity: 0;
+
+    transform: translateY(30px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE PRODUCT MODAL
+===================================================== */
+
+@media (max-width: 750px) {
+
+  .product-modal {
+    grid-template-columns: 1fr;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+  }
+
+
+  .product-modal-image {
+    height: 260px;
+
+    min-height: 260px;
+  }
+
+
+  .product-modal-content {
+    padding: 2rem 1.5rem 2.25rem;
+  }
+
+
+  .product-modal-content h2 {
+    font-size: 1.8rem;
+  }
+
+}
+
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+.product-image-overlay:focus-visible,
+.product-modal-close:focus-visible,
+.product-modal-button:focus-visible {
+  outline: 3px solid #d8b95c;
+
+  outline-offset: 3px;
 }
 }
