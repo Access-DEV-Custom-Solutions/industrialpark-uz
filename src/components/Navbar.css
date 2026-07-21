@@ -267,18 +267,20 @@ body.light-mode .topbar {
 
 /* =====================================================
    MENU BUTTON
- ===================================================== */
+===================================================== */
 
 .menu-toggle {
   display: none;
 
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
 
   align-items: center;
   justify-content: center;
 
-  border: 1px solid rgba(148,163,184,0.25);
+  padding: 0;
+
+  border: 1px solid rgba(148, 163, 184, 0.25);
   border-radius: 10px;
 
   background: transparent;
@@ -292,11 +294,19 @@ body.light-mode .topbar {
     transform 0.25s ease;
 }
 
-.menu-toggle:hover {
-  background: rgba(28,88,219,0.1);
-  transform: scale(1.04);
+.menu-toggle svg {
+  width: 28px;
+  height: 28px;
+
+  display: block;
+
+  stroke-width: 2.5;
 }
 
+.menu-toggle:hover {
+  background: rgba(28, 88, 219, 0.1);
+  transform: scale(1.04);
+}
 
 /* =====================================================
    MOBILE NAVIGATION
