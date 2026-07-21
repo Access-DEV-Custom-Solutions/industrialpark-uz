@@ -106,9 +106,9 @@ export default function Navbar() {
           onClick={() => setMenuOpen((value) => !value)}
         >
           {menuOpen ? (
-            <X size={24} />
+            <X size={28} />
           ) : (
-            <Menu size={24} />
+            <Menu size={28} />
           )}
         </button>
 
